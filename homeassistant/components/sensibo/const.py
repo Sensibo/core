@@ -10,6 +10,8 @@ from homeassistant.const import Platform
 LOGGER = logging.getLogger(__package__)
 
 DEFAULT_SCAN_INTERVAL = 60
+# Poll interval while the event stream is open, for values that have no event
+STREAM_SCAN_INTERVAL = 900
 DOMAIN = "sensibo"
 PLATFORMS = [
     Platform.BINARY_SENSOR,

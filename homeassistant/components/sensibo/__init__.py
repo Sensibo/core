@@ -59,6 +59,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: SensiboConfigEntry) -> N
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
+    entry.async_create_background_task(
+        hass, coordinator.async_listen_events(), f"{DOMAIN}_event_stream"
+    )
+
 
 async def async_unload_entry(hass: HomeAssistant, entry: SensiboConfigEntry) -> None:
     """Unload Sensibo config entry."""
